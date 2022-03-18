@@ -1,4 +1,4 @@
-﻿namespace EmployeeWageUC5
+﻿namespace EmployeeWageUC6
 {
     class program
     {
@@ -6,14 +6,17 @@
         public const int IS_FULL_TIME = 2;
         public const int EMP_HR_PER_RATE = 20;
         public const int NUM_OF_WORKING_DAY = 20;
+        public const int MAX_HR_MONTH = 100;
 
         static void Main(string[] args)
         {
             int empHr = 0;
             int empwage = 0;
-            int TotalEmpWage = 0;
-            for (int day = 0; day < NUM_OF_WORKING_DAY; day++)
+            int TotalEmpHr = 0;
+            int totalworkingdays = 0;
+            while (TotalEmpHr < MAX_HR_MONTH && totalworkingdays < NUM_OF_WORKING_DAY)
             {
+                totalworkingdays++;
                 Random random = new Random();
                 int empCheck = random.Next(0, 3);
                 switch (empCheck)
@@ -28,11 +31,12 @@
                         empHr = 0;
                         break;
                 }
-                empwage = (EMP_HR_PER_RATE * empHr);
-                TotalEmpWage += empwage;
-                Console.WriteLine("Daily employee wage:" + empwage);
+                TotalEmpHr += empHr;
+
+                Console.WriteLine("Day=" + totalworkingdays + "emphrs" + empHr);
             }
-            Console.WriteLine("Total Emp Wage:" + TotalEmpWage);
+            int totalempwage = (EMP_HR_PER_RATE * TotalEmpHr);
+            Console.WriteLine("Total Emp Wage:" + totalempwage);
         }
 
 
