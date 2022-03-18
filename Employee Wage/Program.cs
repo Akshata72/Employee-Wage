@@ -1,32 +1,35 @@
-﻿int Present = 1;
-int FullTime = 1;
-int Emp_per_rate = 20;
-int emphr = 0;
-int empwage = 0;
-
-Random random = new Random();
-Random random1 = new Random();
-int employee_status = random.Next(0, 2);
-int EmployeeTime = random.Next(0, 2);
-
-if (employee_status == Present)
+﻿namespace EmployeeWageUC4
 {
-    if (EmployeeTime == FullTime)
+    class program
     {
-        Console.WriteLine("Employeee is Present for FullTime");
-        emphr = 8;
-    }
-    else
-    {
-        Console.WriteLine("Employee is Present for PartTime");
-        emphr = 4;
+        public const int IS_PART_TIME = 1;
+        public const int IS_FULL_TIME = 2;
+        public const int EMP_HR_PER_RATE = 20;
+
+
+        static void Main(string[] args)
+        {
+            int empHr = 0;
+            int empwage = 0;
+            Random random = new Random();
+            int empCheck = random.Next(0, 3);
+            switch (empCheck)
+            {
+                case IS_PART_TIME:
+                    empHr = 4;
+                    break;
+                case IS_FULL_TIME:
+                    empHr = 8;
+                    break;
+                default:
+                    empHr = 0;
+                    break;
+            }
+            empwage = (EMP_HR_PER_RATE * empHr);
+            Console.WriteLine("Daily employee wage:" + empwage);
+        }
+
+
 
     }
 }
-else
-{
-    Console.WriteLine("Employee is Absent");
-    emphr = 0;
-}
-empwage = (Emp_per_rate * emphr);
-Console.WriteLine("Daily wage" + empwage);
