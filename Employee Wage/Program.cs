@@ -8,9 +8,9 @@ namespace EmployeeWage
 {
     public interface EmployeeWage
     {
-
+        public void CalculateEmpWage(string CompanyName);
     }
-    class Company : EmployeeWage
+    public class Company 
     {
         int DayNumber = 1;
         int TotalWage = 0;
@@ -35,8 +35,7 @@ namespace EmployeeWage
             return "Company name:  " + CompanyName + "     TotalWorkingHrs working days : " + (DayNumber) + "\nTotal working hours:" + TotalWorkingHrs + "\nTotal employee wage:" + TotalWage;
         }
     }
-
-    class Employeewagecomputation
+    public class Employeewagecomputation : EmployeeWage
     {
         private const int IS_FULL_TIME = 1;
         private const int IS_PART_TIME = 2;
@@ -51,6 +50,7 @@ namespace EmployeeWage
             Companies.Add(CompanyName.ToLower(), company);
 
             EmpWageBuilder.Add(company);
+            EmpWageBuilder.Add(CompanyName.ToLower());
         }
         private int IsEmployeePresent()
         {
@@ -85,12 +85,12 @@ namespace EmployeeWage
                 TotalWage += EmpDailyWage;
                 DayNumber++;
                 TotalWorkingHrs += EmpWorkingHrs;
-                Console.WriteLine("Daily Employee wage: Day " + DayNumber + ": " + EmpDailyWage);
             }
             Console.WriteLine("Total working days :" + (DayNumber - 1) + "\nTotal working hours:" + TotalWorkingHrs + "\nTotal employee wage:" + TotalWage);
         }
         public void ComputeDetails()
         {
+            
             foreach (var item in EmpWageBuilder)
             {
                 Console.Write(item);
@@ -108,6 +108,10 @@ namespace EmployeeWage
             employeeWageComputation.ComputeDetails();
         }
 
+        void EmployeeWage.CalculateEmpWage(string CompanyName)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
