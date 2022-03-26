@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 using System.Collections;
 namespace EmployeeWage
 {
-    public interface EmployeeWage
-    {
-        public void CalculateEmpWage(string CompanyName);
-    }
     public class Company 
     {
         int DayNumber = 1;
@@ -35,7 +31,7 @@ namespace EmployeeWage
             return "Company name:  " + CompanyName + "     TotalWorkingHrs working days : " + (DayNumber) + "\nTotal working hours:" + TotalWorkingHrs + "\nTotal employee wage:" + TotalWage;
         }
     }
-    public class Employeewagecomputation : EmployeeWage
+    public class Employeewagecomputation 
     {
         private const int IS_FULL_TIME = 1;
         private const int IS_PART_TIME = 2;
@@ -85,6 +81,7 @@ namespace EmployeeWage
                 TotalWage += EmpDailyWage;
                 DayNumber++;
                 TotalWorkingHrs += EmpWorkingHrs;
+                Console.WriteLine("Daily Employee wage: Day " + DayNumber + ": " + EmpDailyWage);
             }
             Console.WriteLine("Total working days :" + (DayNumber - 1) + "\nTotal working hours:" + TotalWorkingHrs + "\nTotal employee wage:" + TotalWage);
         }
@@ -107,11 +104,5 @@ namespace EmployeeWage
             employeeWageComputation.CalculateEmpWage("Mahindra");
             employeeWageComputation.ComputeDetails();
         }
-
-        void EmployeeWage.CalculateEmpWage(string CompanyName)
-        {
-            throw new NotImplementedException();
-        }
     }
-
 }
